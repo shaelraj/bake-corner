@@ -1,13 +1,17 @@
 import "./App.css";
 import HomePage from "./pages/homepage/hompage.component";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import ShopPage from "./pages/shop/shop.componet";
+import Header from "./components/header/header.component";
 
 function App() {
   return (
     <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-      </Switch>
+    <Header/>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/shop" element={ <ShopPage />} />
+      </Routes>
     </div>
   );
 }
