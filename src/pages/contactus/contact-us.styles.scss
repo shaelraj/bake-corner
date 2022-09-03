@@ -1,0 +1,73 @@
+.contact-us {
+  width: 850px;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .contact-option {
+    background-color: #504a4b;
+    color: white;
+    padding: 1.2rem;
+    border-radius: 1.2rem;
+    text-align: center;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+
+      .option-link {
+        color: black;
+      }
+    }
+
+    .option-title {
+      font-size: 1 rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-option-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .option-link {
+      margin-top: 0.7rem;
+      display: inline-block;
+      font-size: 1.8rem;
+      color: white;
+    }
+  }
+}
+
+.contact-us-form {
+  width: 400px;
+
+  .form-textarea {
+    background: none;
+    background-color: white;
+    color: grey;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid grey;
+    margin: 25px 0;
+    resize: none;
+  }
+}
