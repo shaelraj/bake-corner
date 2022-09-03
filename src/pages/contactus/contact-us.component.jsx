@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiMessengerLine } from "react-icons/ri";
 import { BsWhatsapp } from "react-icons/bs";
+import emailjs from '@emailjs/browser';
 
 import "./contact-us.styles.scss";
 import FormInput from "../../components/form-input/form-input.component";
@@ -12,18 +13,36 @@ const ContactUsPage = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const labelStateMap = {
-    name: setUserName,
-    email: setEmail,
-    message: setMessage,
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_sothdo7', 'template_xqmq6gz', form.current, '2t3i-a0I-iJRk_s37')
+      .then((result) => {
+          console.log(result.text);
+          setUserName('');
+          setEmail('');
+          setMessage('');
+      }, (error) => {
+          console.log(error.text);
+      });
   };
 
-  const handleInputChange = (label, value) => {
-    const stateChanger = labelStateMap[label];
-    if (stateChanger) {
-      stateChanger({
-        value,
-      });
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    if(name === 'userName'){
+      setUserName(value);
+      return;
+    }
+
+    if(name === 'email'){
+      setEmail(value);
+      return;
+    }
+    if(name === 'message'){
+      setMessage(value);
+      return;
     }
   };
 
@@ -63,11 +82,11 @@ const ContactUsPage = () => {
         </div>
       </div>
 
-      <form className="contact-us-form" action="">
+      <form className="contact-us-form" ref={form} onSubmit={sendEmail}>
         <h2>Contact Us</h2>
         <FormInput
-          name="text"
-          type="Name"
+          name="userName"
+          type="userName"
           label="Name"
           value={userName}
           onChange={handleInputChange}
